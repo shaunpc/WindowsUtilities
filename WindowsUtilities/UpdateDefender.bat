@@ -1,1 +1,0 @@
-start /b "Defender Signature Update" "%ProgramFiles%\Windows Defender\MpCmdRun.exe" -SignatureUpdate

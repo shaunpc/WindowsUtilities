@@ -33,5 +33,8 @@
     <None Include="StartPingLatency4.bat">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="readme.md">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

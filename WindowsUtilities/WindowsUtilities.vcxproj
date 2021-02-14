@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="MoveWindow.ps1" />
+    <None Include="readme.md" />
     <None Include="RunAtStartUp.bat" />
     <None Include="StartPingCollectorAppSheet.bat" />
     <None Include="StartPingCollectorSQLite.bat" />
