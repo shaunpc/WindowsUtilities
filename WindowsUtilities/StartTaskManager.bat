@@ -1,0 +1,1 @@
+start %systemroot%\System32\taskmgr
