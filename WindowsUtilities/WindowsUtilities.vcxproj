@@ -19,19 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ExposeDLL.ps1" />
     <None Include="MoveWindow.ps1" />
-    <None Include="Set-ConsoleSize.ps1" />
+    <None Include="RunAtStartUp.bat" />
     <None Include="StartPingCollectorAppSheet.bat" />
     <None Include="StartPingCollectorSQLite.bat" />
-    <None Include="StartPingLatency 4.bat" />
-    <None Include="StartPingVisualiserAppSheet.bat" />
+    <None Include="StartPingLatency4.bat" />
     <None Include="StartPingVisualiserMatplotlib.bat" />
-    <None Include="StartTaskManager.bat" />
-    <None Include="UpdateDefender.bat" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="WindowsUtilities.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
