@@ -27,3 +27,9 @@ start StartPingVisualiserMatplotlib.bat %random%
 start "PingTrend Appsheet Visualiser" /b "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" https://www.appsheet.com/start/2aa910a9-b1bd-44e2-9caf-835da802c1bf
 
 EXIT
+
+
+REM 
+REM  If you ever wanted to kill all the tasks performing Ping Trending then this will do the job:
+REM 
+REM taskkill /fi "WINDOWTITLE eq Ping*"

@@ -13,5 +13,5 @@ echo.
 
 REM start cmd /k ping www.google.com -t
 color 0E
-title pingTest Constant
+title pingTrend Constant
 ping -t -4 www.google.com|cmd /q /v /c "(pause&pause)>nul & for /l %%a in () do (set /p "data=" && echo(IP4 !time! !data!)&ping -n 2 -4 www.google.com>nul"
