@@ -4,8 +4,13 @@ CD C:\Users\shaun\source\repos\WindowsUtilities\WindowsUtilities
 REM #
 REM # Start IN-LINE programs
 REM #
+REM # Ensure latest virus definitions
 start "Defender Update" "%ProgramFiles%\Windows Defender\MpCmdRun.exe" -SignatureUpdate
-start %systemroot%\System32\taskmgr
+REM
+REM # Start taskmanager window on Performance graphs tab
+start %systemroot%\System32\taskmgr ignored /performance
+REM # window move seems to FAIL - not sure why
+REM for /f "tokens=2 USEBACKQ" %%f IN (`tasklist /NH /FI "IMAGENAME eq taskmgr.exe"`) Do powershell -File %USERPROFILE%\source\repos\WindowsUtilities\WindowsUtilities\MoveWindow.ps1 %%f 3100 1000 900 700
 REM #
 REM # Start OWN-PROCESS programs
 REM #
@@ -23,8 +28,7 @@ start StartPingLatency4.bat %random%
 start StartPingCollectorAppSheet.bat %random%
 start StartPingCollectorSQLite.bat %random%
 start StartPingVisualiserMatplotlib.bat %random%
-
-start "PingTrend Appsheet Visualiser" /b "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" https://www.appsheet.com/start/2aa910a9-b1bd-44e2-9caf-835da802c1bf
+start StartPingVisualiserAppSheet.bat
 
 EXIT
 
