@@ -14,4 +14,11 @@ echo.
 REM start cmd /k ping www.google.com -t
 color 0E
 title pingTrend Constant
-ping -t -4 www.google.com|cmd /q /v /c "(pause&pause)>nul & for /l %%a in () do (set /p "data=" && echo(IP4 !time! !data!)&ping -n 2 -4 www.google.com>nul"
+ping -t www.google.com|cmd /q /v /c "(pause&pause)>nul & for /l %%a in () do (set /p "data=" && echo(IP4 !time! !data!)&ping -n 2 www.google.com>nul"
+
+REM
+REM    (pause&pause) ignores the first two lines of the input
+REM			cmd /Q = quiet - turn echo off
+REM				/V delayed variable expansion , V:ON enables !var! to be expanded to use var at execution time
+REM				/C carries out command in string, then terminates
+

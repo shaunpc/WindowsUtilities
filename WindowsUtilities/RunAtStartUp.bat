@@ -29,6 +29,7 @@ start StartPingCollectorAppSheet.bat %random%
 start StartPingCollectorSQLite.bat %random%
 start StartPingVisualiserMatplotlib.bat %random%
 start StartPingVisualiserAppSheet.bat
+start CheckEthernetCardSpeed.bat %random%
 
 EXIT
 
