@@ -11,10 +11,12 @@ echo Trying to get PID
 for /f "tokens=2 USEBACKQ" %%f IN (`tasklist /NH /FI "WINDOWTITLE eq %WinTitle%*"`) Do set myPID=%%f
 if %myPID% equ No goto getPID
 echo Successfully grabbed PID %myPID%
-powershell -File %USERPROFILE%\source\repos\WindowsUtilities\WindowsUtilities\MoveWindow.ps1 %myPID% 3800 1900 1000 200
+powershell -File %USERPROFILE%\source\repos\WindowsUtilities\WindowsUtilities\MoveWindow.ps1 %myPID% 3600 1850 1200 150
 echo.
 
 title Ethernet Speed
 powershell -File %USERPROFILE%\source\repos\WindowsUtilities\WindowsUtilities\CheckEthernetCardSpeed.ps1 
 
+REM needs to run as ADMIN due to tryinhg to restart the Adapter *if* it drops to 100Mbps
+REM PowerShell -NoProfile -ExecutionPolicy Unrestricted -Command "& {Start-Process PowerShell -ArgumentList '-NoProfile -ExecutionPolicy Unrestricted -File ""%USERPROFILE%\source\repos\WindowsUtilities\WindowsUtilities\CheckEthernetCardSpeed.ps1""' -Verb RunAs}";
 
