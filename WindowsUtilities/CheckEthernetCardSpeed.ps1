@@ -4,9 +4,31 @@
 #>
 
 
+# First, move this window someone useful...
+# Expose the WIN32 explicit MoveWindow function
+Add-Type @"
+  using System;
+  using System.Runtime.InteropServices;
+  
+  public class Win32 {
+    [DllImport("user32.dll")]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    public static extern bool MoveWindow(IntPtr hWnd, int X, int Y, int nWidth, int nHeight, bool bRepaint);
+  }
+"@
+# Get the window handler for this process
+$h = (Get-Process -Id $PID).MainWindowHandle
+# Move the window accord to parameters passed
+# 3600 1850 1200 150
+[Win32]::MoveWindow($h, 3500, 1850, 1300, 150, $true )
+
+
 clear-host
 $badCount = 0
 $statusGood = $true
+
+$timestamp = Get-Date -format "yyyy-MMM-dd HH:mm:ss"
+write-host $timestamp / Ethernet Card Status Checker Started
 
 while ($true) {
 	$a = (Get-Host).UI.RawUI
@@ -38,7 +60,10 @@ while ($true) {
 			write-host ">>>  Attempting Ethernet Adapter Restart"
 			# This next command needs to be running as Admin
 			# TODO !!!
-			Restart-NetAdapter -Name Ethernet
+			try {Restart-NetAdapter -Name Ethernet}
+			catch {
+				read-host "ERROR: Unable to restart, please perform manually. Then press ENTER to continue"
+			}
 		}
 	}
 	Start-Sleep -Seconds 1

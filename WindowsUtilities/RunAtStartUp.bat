@@ -23,6 +23,11 @@ if %ERRORLEVEL% EQU 1 goto ok
 exit
 :ok
 
+
+REM # Fire up DBRAS as a new chrome window
+start "DB RAS" /b "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --new-window --app=https://dbrasweb.db.com/
+
+
 REM # pass random number from here, otherwise all the processes get the same one as based of clock-time seed
 start StartPingLatency4.bat %random%
 start StartPingCollectorAppSheet.bat %random%

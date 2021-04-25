@@ -15,8 +15,10 @@ powershell -File %USERPROFILE%\source\repos\WindowsUtilities\WindowsUtilities\Mo
 echo.
 
 title Ethernet Speed
-powershell -File %USERPROFILE%\source\repos\WindowsUtilities\WindowsUtilities\CheckEthernetCardSpeed.ps1 
-
+start powershell -File %USERPROFILE%\source\repos\WindowsUtilities\WindowsUtilities\CheckNetworkCard.ps1 Ethernet 3100 1500
+start powershell -File %USERPROFILE%\source\repos\WindowsUtilities\WindowsUtilities\CheckNetworkCard.ps1 Wi-Fi 3300 1650
 REM needs to run as ADMIN due to tryinhg to restart the Adapter *if* it drops to 100Mbps
-REM PowerShell -NoProfile -ExecutionPolicy Unrestricted -Command "& {Start-Process PowerShell -ArgumentList '-NoProfile -ExecutionPolicy Unrestricted -File ""%USERPROFILE%\source\repos\WindowsUtilities\WindowsUtilities\CheckEthernetCardSpeed.ps1""' -Verb RunAs}";
+PowerShell -NoProfile -ExecutionPolicy Unrestricted -Command "& {Start-Process PowerShell -ArgumentList '-NoProfile -ExecutionPolicy Unrestricted -File ""%USERPROFILE%\source\repos\WindowsUtilities\WindowsUtilities\CheckEthernetCardSpeed.ps1""' -Verb RunAs}";
+REM PowerShell -NoProfile -ExecutionPolicy Unrestricted -Command "& {Start-Process PowerShell -ArgumentList '-NoProfile -ExecutionPolicy Unrestricted -File ""%USERPROFILE%\source\repos\WindowsUtilities\WindowsUtilities\CheckNetworkCard.ps1 Wi-Fi 3200 1850""' -Verb RunAs}";
 
+exit
