@@ -8,7 +8,7 @@ echo Trying to get PID
 for /f "tokens=2 USEBACKQ" %%f IN (`tasklist /NH /FI "WINDOWTITLE eq %WinTitle%*"`) Do set myPID=%%f
 if %myPID% equ No goto getPID
 echo Successfully grabbed PID %myPID%
-powershell -File %USERPROFILE%\source\repos\WindowsUtilities\WindowsUtilities\MoveWindow.ps1 %myPID% 4000 2100 800 400
+powershell -File %USERPROFILE%\source\repos\WindowsUtilities\WindowsUtilities\MoveWindow.ps1 %myPID% 4000 2200 800 300
 echo.
 
 cd C:\Users\shaun\PycharmProjects\pingTrend
