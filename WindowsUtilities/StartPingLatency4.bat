@@ -1,5 +1,7 @@
 @echo off
 
+if "%~1"=="" goto justRUN
+
 set WinTitle=WIN%1%
 echo Moving window : %WinTitle%
 title %WinTitle%
@@ -12,8 +14,9 @@ powershell -File %USERPROFILE%\source\repos\WindowsUtilities\WindowsUtilities\Mo
 echo.
 
 REM start cmd /k ping www.google.com -t
-color 0E
 title pingTrend Constant
+color 0E
+:justRUN
 ping -t www.google.com|cmd /q /v /c "(pause&pause)>nul & for /l %%a in () do (set /p "data=" && echo(IP4 !time! !data!)&ping -n 2 www.google.com>nul"
 
 REM

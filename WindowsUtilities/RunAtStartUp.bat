@@ -20,7 +20,7 @@ echo Day of week is %DayOfWeek%
 if %DayOfWeek% gtr 0 if %DayOfWeek% lss 6 goto ok
 choice /C YN /T 10 /D N /M "It's the Weekend, do you want these to run"
 if %ERRORLEVEL% EQU 1 goto ok
-exit
+exit 0
 :ok
 
 
@@ -30,14 +30,23 @@ REM start "DB RAS" /b "C:\Program Files (x86)\Google\Chrome\Application\chrome.e
 
 
 REM # pass random number from here, otherwise all the processes get the same one as based of clock-time seed
-start StartPingLatency4.bat %random%
-start StartPingCollectorAppSheet.bat %random%
-start StartPingCollectorSQLite.bat %random%
+
+REM fire up all in the new windows terminal as multipane
+start StartMultiPane
 start StartPingVisualiserMatplotlib.bat %random%
 start StartPingVisualiserAppSheet.bat
-start CheckEthernetCardSpeed.bat %random%
 
-EXIT
+
+REM # 
+REM # ... Now look for and position the main CHROME window correctly - if not running then 10th attrib if "criteria."
+REM #
+:chromePID   
+for /f "tokens=10 USEBACKQ" %%f IN (`tasklist /V /NH /FI "IMAGENAME eq chrome.exe"`) do if not %%f==N/A set chromePID=%%f
+if %chromePID% equ criteria. goto chromePID
+powershell -File %USERPROFILE%\source\repos\WindowsUtilities\WindowsUtilities\MoveWindow.ps1 %chromePID% 3075 -300 1725 1300
+
+
+EXIT 0
 
 
 REM 

@@ -3,30 +3,10 @@
 :: 
 #>
 
-# Get passed argurments
+# Get passed argument - type-of-card
 $card = $args[0]
-$winX = $args[1]
-$winY = $args[2]
 
-# First, move this window someone useful...
-# Expose the WIN32 explicit MoveWindow function
-Add-Type @"
-  using System;
-  using System.Runtime.InteropServices;
-  
-  public class Win32 {
-    [DllImport("user32.dll")]
-    [return: MarshalAs(UnmanagedType.Bool)]
-    public static extern bool MoveWindow(IntPtr hWnd, int X, int Y, int nWidth, int nHeight, bool bRepaint);
-  }
-"@
-# Get the window handler for this process
-$h = (Get-Process -Id $PID).MainWindowHandle
-# Move the window accord to parameters passed
-[Win32]::MoveWindow($h, $winX, $winY, 1200, 150, $true )
-
-
-clear-host
+# clear-host
 $count_up_good = 0
 $count_up_bad = 0
 $count_disc = 0
@@ -37,10 +17,14 @@ $prevStatus = ""
 $prevLinkSpeed = ""
 
 $timestamp = Get-Date -format "yyyy-MMM-dd HH:mm:ss"
-write-host $timestamp / NetWork Card Status Checker Started
+write-host $timestamp / NetWork Card Status Checker Started / Available Network Adapters
+Get-NetAdapter
+write-host "--"
+
 Get-NetAdapter -Name $card | select InterfaceDescription -outvariable card_obj | Out-Null
 write-host $timestamp / $card / $card_obj.InterfaceDescription
-$Host.UI.RawUI.WindowTitle = "Card Check: " + $card_obj.InterfaceDescription
+# If you want the windoe title changed... 
+# $Host.UI.RawUI.WindowTitle = "Card Check: " + $card_obj.InterfaceDescription
 	
 while ($true) 
 {

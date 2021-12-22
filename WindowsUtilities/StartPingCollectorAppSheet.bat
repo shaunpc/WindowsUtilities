@@ -1,5 +1,7 @@
 @echo off
 
+if "%~1"=="" goto justRUN
+
 set WinTitle=WIN%1%
 echo Moving window : %WinTitle%
 title %WinTitle%
