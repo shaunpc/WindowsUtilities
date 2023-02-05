@@ -20,8 +20,8 @@ REM    now we have to wait a while until the matplotlib WINDOW TITLE stablises
 :waitPID
 echo Waiting for MatPlotLib Window to complete load
 timeout 5 > nul
-for /f "tokens=2 USEBACKQ" %%f IN (`tasklist /NH /FI "IMAGENAME eq python.exe" /FI "WINDOWTITLE eq Ping Trend*"`) Do set myPID=%%f
+for /f "tokens=2 USEBACKQ" %%f IN (`tasklist /NH /FI "IMAGENAME eq python*" /FI "WINDOWTITLE eq Ping Trend*"`) Do set myPID=%%f
 if %myPID% equ No goto waitPID
 echo Found window Process ID : %myPID%
-powershell -File %USERPROFILE%\source\repos\WindowsUtilities\WindowsUtilities\MoveWindow.ps1 %myPID% 3075 2200 1725 500
+powershell -File %USERPROFILE%\source\repos\WindowsUtilities\WindowsUtilities\MoveWindow.ps1 %myPID% 3070 2220 870 500
 exit	
