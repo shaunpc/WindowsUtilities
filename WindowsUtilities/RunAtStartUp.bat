@@ -6,11 +6,12 @@ REM # Start IN-LINE programs
 REM #
 REM # Ensure latest virus definitions
 start "Defender Update" "%ProgramFiles%\Windows Defender\MpCmdRun.exe" -SignatureUpdate
+REM powershell Update-MpSignature
 REM
 REM # Start taskmanager window on Performance graphs tab
 start %systemroot%\System32\taskmgr ignored /performance
 REM # window move seems to FAIL - not sure why
-REM for /f "tokens=2 USEBACKQ" %%f IN (`tasklist /NH /FI "IMAGENAME eq taskmgr.exe"`) Do powershell -File %USERPROFILE%\source\repos\WindowsUtilities\WindowsUtilities\MoveWindow.ps1 %%f 3100 1000 900 700
+REM for /f "tokens=2 USEBACKQ" %%f IN (`tasklist /NH /FI "IMAGENAME eq taskmgr.exe"`) Do powershell -File %USERPROFILE%\source\repos\WindowsUtilities\WindowsUtilities\MoveWindow.ps1 %%f 3070 1000 1735 500
 REM #
 REM # Start OWN-PROCESS programs
 REM #

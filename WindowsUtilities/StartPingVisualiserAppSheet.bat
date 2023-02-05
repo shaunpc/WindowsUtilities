@@ -16,5 +16,5 @@ timeout 5 > nul
 for /f "tokens=2 USEBACKQ" %%f IN (`tasklist /NH /FI "IMAGENAME eq chrome.exe" /FI "WINDOWTITLE eq Ping Trend*"`) Do set myPID=%%f
 if %myPID% equ No goto waitPID
 echo Found window Process ID : %myPID%
-powershell -File %USERPROFILE%\source\repos\WindowsUtilities\WindowsUtilities\MoveWindow.ps1 %myPID% 3075 1700 1725 500
+powershell -File %USERPROFILE%\source\repos\WindowsUtilities\WindowsUtilities\MoveWindow.ps1 %myPID% 3935 2220 870 500
 exit
