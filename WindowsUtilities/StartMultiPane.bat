@@ -6,7 +6,7 @@ REM # Start WINDOWS TERMINAL in MULTI-PANE mode for PING TREND
 REM #
 
 wt --window PingTrends --title "PingTrends CardSpeed"  --tabColor "#0F6307" -d "%USERPROFILE%\source\repos\WindowsUtilities\WindowsUtilities" powershell -File CheckNetworkCard.ps1 Ethernet ; ^
-	sp -H --title "PingTrends RealTime"  --tabColor "#FF6347" --colorScheme "PingTrends" -s 0.6 -d "%USERPROFILE%\source\repos\WindowsUtilities\WindowsUtilities" StartPingLatency4.bat ; ^
+	sp -H --title "PingTrends RealTime"  --tabColor "#FF6347" --colorScheme "PingTrends" -s 0.6 -d "%USERPROFILE%\source\repos\WindowsUtilities\WindowsUtilities" cmd /K StartPingLatency4.bat ; ^
 	sp --title "PingTrends SQLite"  --tabColor "#00FF47" --colorScheme "Solarized Dark" -s 0.5 -d "%USERPROFILE%\PycharmProjects\pingTrend" python collect-sqlite.py ; ^
 	sp -H --title "PingTrends Sheets"  --tabColor "#0F07FF"  --colorScheme "Tango Dark" -s 0.5 -d "%USERPROFILE%\PycharmProjects\pingTrend" python collect-sheets.py ; ^
 	move-focus left 
